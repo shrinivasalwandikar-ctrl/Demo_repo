@@ -9,7 +9,7 @@ on:
 
 jobs:
     check-self-hosted:
-        runs-on: self-hosted
+        runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
             - run: ls -lart
