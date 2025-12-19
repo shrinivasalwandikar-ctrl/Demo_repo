@@ -1,0 +1,8 @@
+name: demo2
+on : workflow_dispatch
+jobs:
+    This-is-my-first-job:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "${{ github.actor }} "
+            - run: echo " Welcome to gut Hub Actions:Mr. Shrinivas"
