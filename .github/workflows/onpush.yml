@@ -1,0 +1,16 @@
+# This workflow lists the files in the repository using GitHub Actions.
+name: List Repository Files
+
+on:
+  push:
+        branches: [ main ]
+    
+  workflow_dispatch:
+
+jobs:
+    check-self-hosted:
+        runs-on: self-hosted
+        steps:
+            - uses: actions/checkout@v4
+            - run: ls -lart
+            - run: pwd && ls -la
