@@ -1,0 +1,27 @@
+# This workflow demonstrates continuing execution even if a job fails in GitHub Actions.
+name: Continue on Failure
+
+on: workflow_dispatch
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Failing Job
+        run: exit 1  # Simulate failure
+
+  job2:
+    needs: job1
+    if: ${{ always() }}  # <-- Run even if job1 fails
+    runs-on: ubuntu-latest
+    steps:
+      - name: Continue Job 2
+        run: echo "This runs even if Job 1 fails"
+
+  job3:
+    needs: job2
+    if: ${{ always() }}  # <-- Run even if job2 or earlier fails
+    runs-on: ubuntu-latest
+    steps:
+      - name: Continue Job 3
+        run: echo "This runs even if Job 2 fails"
