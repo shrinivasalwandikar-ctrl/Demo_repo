@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Step 1
-        run: exit 1  # Simulate failure
+        run: echo "This is Job 1"
 
   job2:
     needs: job1
