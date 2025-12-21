@@ -1,0 +1,25 @@
+name: Demo Custom Action Workflow
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  demo-custom-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+        
+      - name: Run Demo Custom Action
+        id: demo-step
+        uses: ./.github/actions/demo-action
+        with:
+          name: "ITD"
+      
+      - name: Display Action Output
+        run: |
+          echo "Custom action executed!"
+          echo "Output from action: ${{ steps.demo-step.outputs.demo-output }}"
