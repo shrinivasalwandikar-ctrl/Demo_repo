@@ -1,0 +1,23 @@
+name: 'Demo Action'
+description: 'A simple demo custom action'
+inputs:
+  name:
+    description: 'Name to greet'
+    required: false
+    default: 'World'
+outputs:
+  demo-output:
+    description: 'Output from the demo action'
+    value: ${{ steps.set_output.outputs.result }}
+runs:
+  using: 'composite'
+  steps:
+    - name: Run demo command
+      run: echo "Hello, ${{ inputs.name }}!"
+      shell: bash
+    
+    - name: Set output
+      id: set_output
+      run: |
+        echo "result=Action executed successfully" >> $GITHUB_OUTPUT
+      shell: bash
